@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Página oficial de IximData. Conoce la aplicación y descarga su versión para Windows.">
+  <meta name="theme-color" content="#071321">
+  <title>IximData | Plataforma inteligente</title>
+  <style>
+    :root {
+      --bg: #071321;
+      --panel: #0d1e31;
+      --panel2: #102840;
+      --text: #f3f8ff;
+      --muted: #a8bbcf;
+      --cyan: #45d6e8;
+      --blue: #2588e8;
+      --line: rgba(150,190,220,.16);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0; color: var(--text);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Arial, sans-serif;
+      background:
+        radial-gradient(ellipse at 75% 12%, rgba(26,120,180,.22), transparent 34rem),
+        radial-gradient(ellipse at 12% 45%, rgba(28,191,203,.10), transparent 30rem),
+        var(--bg);
+    }
+    a { color: inherit; }
+    .wrap { width: min(1120px, calc(100% - 40px)); margin: auto; }
+    header {
+      height: 78px; display: flex; align-items: center; justify-content: space-between;
+      border-bottom: 1px solid var(--line);
+    }
+    .brand { display: flex; align-items: center; gap: 12px; font-weight: 800; letter-spacing: .11em; }
+    .brand-mark {
+      width: 38px; height: 38px; display: grid; place-items: center; border-radius: 12px;
+      color: #061522; font-weight: 900; letter-spacing: 0;
+      background: linear-gradient(135deg, var(--cyan), var(--blue));
+      box-shadow: 0 0 28px rgba(69,214,232,.22);
+    }
+    nav { display: flex; gap: 26px; color: var(--muted); font-size: 14px; }
+    nav a { text-decoration: none; }
+    nav a:hover { color: var(--cyan); }
+    .hero {
+      min-height: 590px; display: grid; grid-template-columns: 1.1fr .9fr;
+      align-items: center; gap: 50px; padding: 76px 0 86px;
+    }
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 9px; padding: 8px 13px;
+      border: 1px solid rgba(69,214,232,.32); border-radius: 99px;
+      color: var(--cyan); background: rgba(69,214,232,.07);
+      font-size: 12px; font-weight: 700; letter-spacing: .12em;
+    }
+    .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--cyan); box-shadow: 0 0 12px var(--cyan); }
+    h1 { margin: 22px 0 16px; font-size: clamp(48px, 7vw, 76px); line-height: .99; letter-spacing: -.055em; }
+    h1 span { color: var(--cyan); }
+    .lead { max-width: 590px; color: var(--muted); font-size: 18px; line-height: 1.75; }
+    .actions { display: flex; flex-wrap: wrap; align-items: center; gap: 14px; margin-top: 30px; }
+    .button {
+      display: inline-flex; justify-content: center; align-items: center; gap: 10px;
+      padding: 15px 21px; border-radius: 11px; text-decoration: none; font-weight: 800;
+      transition: transform .2s, box-shadow .2s, background .2s;
+    }
+    .button:hover { transform: translateY(-2px); }
+    .primary { color: #041421; background: linear-gradient(100deg, var(--cyan), #65aaff); box-shadow: 0 12px 32px rgba(37,136,232,.22); }
+    .secondary { border: 1px solid var(--line); color: var(--text); background: rgba(255,255,255,.03); }
+    .small-note { margin-top: 14px; color: #8199b1; font-size: 12px; }
+    .visual {
+      position: relative; min-height: 360px; display: grid; place-items: center;
+      border: 1px solid rgba(115,184,220,.2); border-radius: 28px; overflow: hidden;
+      background: linear-gradient(145deg, rgba(18,49,76,.94), rgba(8,23,39,.92));
+      box-shadow: 0 30px 90px rgba(0,0,0,.25);
+    }
+    .visual:before, .visual:after {
+      content: ""; position: absolute; border: 1px solid rgba(69,214,232,.18); border-radius: 50%;
+      width: 310px; height: 310px;
+    }
+    .visual:after { width: 220px; height: 220px; }
+    .orb {
+      z-index: 1; width: 142px; height: 142px; display: grid; place-items: center;
+      border-radius: 38px; font-size: 52px; font-weight: 900; color: #061522;
+      background: linear-gradient(135deg, #6ff0ed, #348be9);
+      box-shadow: 0 0 75px rgba(69,214,232,.32);
+      transform: rotate(-8deg);
+    }
+    .float {
+      position: absolute; z-index: 2; padding: 13px 16px; border-radius: 12px;
+      border: 1px solid var(--line); background: rgba(8,23,39,.88);
+      color: #dcecff; font-size: 12px; box-shadow: 0 12px 30px rgba(0,0,0,.2);
+    }
+    .float.one { top: 48px; left: 25px; }
+    .float.two { right: 22px; bottom: 55px; }
+    section { padding: 72px 0; }
+    .section-head { max-width: 650px; margin: 0 auto 34px; text-align: center; }
+    .section-head h2 { margin: 0 0 12px; font-size: clamp(28px, 4vw, 40px); letter-spacing: -.03em; }
+    .section-head p { margin: 0; color: var(--muted); line-height: 1.7; }
+    .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .card {
+      padding: 25px; border: 1px solid var(--line); border-radius: 18px;
+      background: linear-gradient(150deg, rgba(16,40,64,.9), rgba(10,27,45,.85));
+    }
+    .icon {
+      width: 43px; height: 43px; display: grid; place-items: center; border-radius: 12px;
+      background: rgba(69,214,232,.10); color: var(--cyan); font-size: 20px;
+    }
+    .card h3 { margin: 18px 0 9px; font-size: 18px; }
+    .card p { margin: 0; color: var(--muted); line-height: 1.65; font-size: 14px; }
+    .download-panel {
+      padding: 42px; border: 1px solid rgba(69,214,232,.22); border-radius: 22px;
+      text-align: center; background: linear-gradient(120deg, rgba(18,55,82,.85), rgba(12,31,51,.9));
+    }
+    .download-panel h2 { margin: 0 0 12px; font-size: 32px; }
+    .download-panel p { color: var(--muted); line-height: 1.65; }
+    .status { margin-top: 16px; font-size: 12px; color: #f5cb76; }
+    footer { padding: 28px 0; border-top: 1px solid var(--line); color: #8199b1; font-size: 13px; }
+    footer .foot { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+    @media (max-width: 800px) {
+      .hero { grid-template-columns: 1fr; gap: 35px; padding: 62px 0; }
+      .visual { min-height: 290px; }
+      .cards { grid-template-columns: 1fr; }
+      nav { gap: 14px; }
+    }
+    @media (max-width: 480px) {
+      .wrap { width: min(100% - 28px, 1120px); }
+      header { height: 68px; }
+      nav a:first-child { display: none; }
+      .download-panel { padding: 28px 18px; }
+      .actions .button { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <header class="wrap">
+    <a class="brand" href="#" aria-label="IximData inicio" style="text-decoration:none">
+      <span class="brand-mark">I</span><span>IXIMDATA</span>
+    </a>
+    <nav aria-label="Navegación principal">
+      <a href="#funciones">Características</a>
+      <a href="#descarga">Descargar</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="hero wrap">
+      <div>
+        <div class="eyebrow"><span class="dot"></span> SOFTWARE PARA WINDOWS</div>
+        <h1>Datos más claros.<br><span>Decisiones mejores.</span></h1>
+        <p class="lead">
+          Conoce IximData, una aplicación de escritorio enfocada en el análisis
+          y la gestión inteligente de información. Una experiencia diseñada
+          para trabajar de forma práctica y organizada.
+        </p>
+        <div class="actions">
+          <!-- Reemplaza el enlace temporal cuando subas el instalador -->
+          <a class="button primary" href="https://drive.google.com/uc?export=download&id=1ESOhfBthfJjwfDNffdkuV1SLmM8325lx" target="_blank" rel="noopener">↓ Descargar IximData</a>
+          <a class="button secondary" href="#funciones">Conocer más</a>
+        </div>
+        <div class="small-note">Aplicación de escritorio · Windows · Descarga próximamente</div>
+      </div>
+      <div class="visual" aria-label="Ilustración decorativa de IximData">
+        <div class="float one">◆ Análisis inteligente</div>
+        <div class="orb">I</div>
+        <div class="float two">IXIMDATA&nbsp; / &nbsp;DATA PLATFORM</div>
+      </div>
+    </div>
+
+    <section id="funciones">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Una plataforma, múltiples posibilidades</h2>
+          <p>Un espacio central para trabajar con información de manera ordenada y eficiente.</p>
+        </div>
+        <div class="cards">
+          <article class="card">
+            <div class="icon">⌁</div>
+            <h3>Análisis de información</h3>
+            <p>Organiza y consulta datos desde una interfaz de escritorio.</p>
+          </article>
+          <article class="card">
+            <div class="icon">▦</div>
+            <h3>Flujo de trabajo</h3>
+            <p>Reúne herramientas y procesos en una experiencia integrada.</p>
+          </article>
+          <article class="card">
+            <div class="icon">◈</div>
+            <h3>Diseño tecnológico</h3>
+            <p>Una presentación clara, moderna y pensada para Windows.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="descarga">
+      <div class="wrap">
+        <div class="download-panel">
+          <h2>Descarga IximData</h2>
+          <p>La versión para Windows estará disponible aquí cuando se publique el instalador oficial.</p>
+          <a class="button primary" href="https://drive.google.com/uc?export=download&id=1ESOhfBthfJjwfDNffdkuV1SLmM8325lx" target="_blank" rel="noopener"
+             aria-label="Descargar IximData para Windows">
+            ↓ Descargar para Windows
+          </a>
+          <div class="status">Enlace de descarga configurado · Archivo alojado en Google Drive</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap foot">
+      <span>© 2026 IximData. Todos los derechos reservados.</span>
+      <span>Aplicación de escritorio para Windows</span>
+    </div>
+  </footer>
+</body>
+</html>
